@@ -9,6 +9,10 @@
       content="Get help with Payback. We're here for you."
     />
 
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/app-icon.png" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -29,9 +33,15 @@
       <div
         class="container mx-auto px-6 py-5 flex justify-between items-center"
       >
-        <a href="index.html" class="text-3xl font-bold text-purple-600"
-          >Payback</a
-        >
+        <a href="index.html" class="flex items-center space-x-3">
+          <img
+            src="images/app-icon.png"
+            alt="Payback App Icon"
+            class="h-9 w-9 rounded-xl shadow-md transition-transform hover:scale-105"
+          />
+          <span class="text-2xl font-bold text-purple-600">Payback</span>
+        </a>
+
         <ul class="flex space-x-10 text-gray-600 font-medium">
           <li>
             <a
@@ -120,7 +130,15 @@
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12">
       <div class="container mx-auto px-6 text-center">
-        <p class="text-2xl font-bold text-white mb-4">Payback</p>
+        <div class="flex items-center justify-center space-x-3 mb-4">
+          <img
+            src="images/app-icon.png"
+            alt="Payback App Icon"
+            class="h-8 w-8 rounded-lg shadow-md"
+          />
+          <span class="text-2xl font-bold text-white">Payback</span>
+        </div>
+
         <p class="mb-6">© 2025 Payback. All rights reserved.</p>
         <ul class="flex justify-center space-x-8">
           <li>

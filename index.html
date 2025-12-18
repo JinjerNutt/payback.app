@@ -18,9 +18,16 @@
       property="og:description"
       content="Never forget who owes you money. Simple, private, and beautiful."
     />
-    <meta property="og:image" content="images/og-image.jpg" />
-    <meta property="og:url" content="https://yourdomain.com" />
+    <meta
+      property="og:image"
+      content="https://paybackapp.com.au/images/og-image.jpg"
+    />
+
+    <meta property="og:url" content="https://paybackapp.com.au" />
     <meta property="og:type" content="website" />
+
+    <meta name="apple-itunes-app" content="app-id=6756201066" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/app-icon.png" />
 
     <!-- Tailwind CSS v2 + Inter font -->
     <link
@@ -43,6 +50,15 @@
       .feature-img:hover {
         transform: translateY(-12px);
       }
+      html {
+        scroll-behavior: smooth;
+      }
+      .glow-effect {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+          /* Reduced from 0.8 */ 0 0 40px rgba(255, 255, 255, 0.4),
+          /* Reduced from 0.6 */ 0 0 80px rgba(255, 255, 255, 0.25),
+          /* Reduced from 0.4 */ 0 20px 40px rgba(0, 0, 0, 0.3); /* Kept the dark depth */
+      }
     </style>
   </head>
 
@@ -52,7 +68,15 @@
       <div
         class="container mx-auto px-6 py-5 flex justify-between items-center"
       >
-        <a href="/" class="text-3xl font-bold text-purple-600">Payback</a>
+        <a href="/" class="flex items-center space-x-3">
+          <img
+            src="images/app-icon.png"
+            alt="Payback App Icon"
+            class="h-9 w-9 rounded-xl shadow-md transition-transform hover:scale-105"
+          />
+          <span class="text-2xl font-bold text-purple-600">Payback</span>
+        </a>
+
         <ul class="flex space-x-10 text-gray-600 font-medium">
           <li>
             <a href="#features" class="hover:text-purple-600 transition"
@@ -78,29 +102,46 @@
       class="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-32"
     >
       <div class="container mx-auto px-6 text-center max-w-4xl">
-        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">Payback</h1>
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">
+          Payback – Debt Tracker for iOS
+        </h1>
         <p class="text-xl md:text-2xl mb-10 opacity-90 leading-relaxed">
-          The simplest way to track who owes you money — and who you owe.<br
-            class="hidden md:block"
-          />
+          The simplest way to track money you’ve lent or borrowed, see who owes
+          you, and stay on top of repayments.
         </p>
-        <img
-          src="images/app-icon.png"
-          alt="Payback App Icon"
-          class="mx-auto h-32 mb-10 rounded-3xl shadow-2xl"
-        />
+        <div class="mx-auto h-40 w-40 mb-10 flex items-center justify-center">
+          <img
+            src="images/app-icon.png"
+            alt="Payback App Icon"
+            class="h-32 w-32 rounded-3xl shadow-2xl glow-effect"
+          />
+        </div>
+
         <!-- Replace the old <a> button with this -->
         <a
           href="https://apps.apple.com/app/payback-debt-tracker/id6756201066"
           target="_blank"
-          class="block w-max mx-auto"
+          class="inline-block transform hover:scale-105 transition duration-300"
         >
           <img
             src="images/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
             alt="Download on the App Store"
-            class="h-14 md:h-16 hover:opacity-90 transition"
+            class="h-16 md:h-20 drop-shadow-2xl"
           />
         </a>
+        <p class="mt-6 text-white/90 text-lg font-medium">
+          Available on iPhone · Requires iOS 17.2 or later
+        </p>
+        <div
+          class="mt-12 text-gray-200 max-w-3xl mx-auto text-lg leading-relaxed"
+        >
+          Payback is a private debt tracker app for iPhone that helps you track
+          money owed between friends, family, and roommates. Record partial
+          payments, set reminders, and always know where you stand —
+          <a href="privacy.html" class="underline hover:text-white">
+            without accounts or data collection </a
+          >.
+        </div>
       </div>
     </section>
 
@@ -122,7 +163,7 @@
             <div class="order-1 md:order-2">
               <img
                 src="images/1.png"
-                alt="Adding a debt in Payback"
+                alt="Adding a debt in the Payback debt tracker app"
                 class="w-full max-w-lg mx-auto rounded-3xl feature-img"
                 loading="lazy"
               />
@@ -147,7 +188,7 @@
             <div class="order-1 md:order-1">
               <img
                 src="images/2.png"
-                alt="Reminders in Payback"
+                alt="Reminders in Payback debt tracker app"
                 class="w-full max-w-lg mx-auto rounded-3xl feature-img"
                 loading="lazy"
               />
@@ -172,7 +213,7 @@
             <div class="order-1 md:order-2">
               <img
                 src="images/3.png"
-                alt="Privacy first design"
+                alt="Privacy first design in Payback debt tracker app"
                 class="w-full max-w-lg mx-auto rounded-3xl feature-img"
                 loading="lazy"
               />
@@ -197,7 +238,7 @@
             <div class="order-1 md:order-1">
               <img
                 src="images/4.png"
-                alt="History and insights screen"
+                alt="History and insights screen in Payback debt tracker app"
                 class="w-full max-w-lg mx-auto rounded-3xl feature-img"
                 loading="lazy"
               />
@@ -222,21 +263,36 @@
         <a
           href="https://apps.apple.com/app/payback-debt-tracker/id6756201066"
           target="_blank"
-          class="block w-max mx-auto"
+          class="inline-block transform hover:scale-105 transition duration-300"
         >
           <img
             src="images/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
             alt="Download on the App Store"
-            class="h-14 md:h-16 hover:opacity-90 transition"
+            class="h-16 md:h-20 drop-shadow-2xl"
           />
         </a>
+        <p class="mt-6 text-white/90 text-lg font-medium">
+          Available on iPhone · Requires iOS 17.2 or later
+        </p>
       </div>
     </section>
+
+    <p class="text-center text-gray-500 text-sm mt-16">
+      Download Payback on the Apple App Store.
+    </p>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12">
       <div class="container mx-auto px-6 text-center">
-        <p class="text-2xl font-bold text-white mb-4">Payback</p>
+        <div class="flex items-center justify-center space-x-3 mb-4">
+          <img
+            src="images/app-icon.png"
+            alt="Payback App Icon"
+            class="h-8 w-8 rounded-lg shadow-md"
+          />
+          <span class="text-2xl font-bold text-white">Payback</span>
+        </div>
+
         <p class="mb-6">© 2025 Payback. All rights reserved.</p>
         <ul class="flex justify-center space-x-8">
           <li>
