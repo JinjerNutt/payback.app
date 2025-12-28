@@ -1,39 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Payback - Debt Tracker for iOS</title>
+    <title>
+      Payback – Best Debt Tracker App for iOS | Track IOUs & Loans Privately
+    </title>
     <meta
       name="description"
-      content="Track who owes you money — and who you owe. Simple, private, no accounts required."
+      content="Track debts you owe and are owed. Unlimited tracking, partial payments, stats, exports, multi-currency & more. Privacy-first."
     />
 
-    <!-- Favicon -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-
     <!-- Open Graph -->
-    <meta property="og:title" content="Payback - Debt Tracker" />
+    <meta property="og:title" content="Payback – Debt Tracker" />
     <meta
       property="og:description"
-      content="Never forget who owes you money. Simple, private, and beautiful."
+      content="Simple, private debt tracking with progress bars, reminders, exports & analytics."
     />
-    <meta
-      property="og:image"
-      content="https://paybackapp.com.au/images/og-image.jpg"
-    />
-
+    <meta property="og:image" content="images/og-image.jpg" />
     <meta property="og:url" content="https://paybackapp.com.au" />
     <meta property="og:type" content="website" />
-
     <meta name="apple-itunes-app" content="app-id=6756201066" />
     <link rel="apple-touch-icon" sizes="180x180" href="images/app-icon.png" />
 
-    <!-- Tailwind CSS v2 + Inter font -->
+    <!-- SEO Keywords -->
+    <meta
+      name="keywords"
+      content="debt tracker app, iPhone debt app, IOU tracker, split bills app, personal loan tracker, private debt manager, payback app, money owed tracker"
+    />
+
+    <!-- Twitter Cards (for better sharing on X/Twitter) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Payback – Debt Tracker for iOS" />
+    <meta
+      name="twitter:description"
+      content="Track debts you owe and are owed. Unlimited, private, with progress bars, exports, stats & more."
+    />
+    <meta
+      name="twitter:image"
+      content="https://paybackapp.com.au/images/og-image.jpg"
+    />
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Payback App" />
+    <link rel="canonical" href="https://paybackapp.com.au/" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <!-- Dark mode support -->
+    <script>
+      // On page load or when changing themes
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -43,21 +78,132 @@
       body {
         font-family: 'Inter', sans-serif;
       }
+      html {
+        scroll-behavior: smooth;
+      }
       .feature-img {
-        transition: transform 0.4s ease;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       }
       .feature-img:hover {
         transform: translateY(-12px);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
       }
-      html {
-        scroll-behavior: smooth;
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
       .glow-effect {
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
-          /* Reduced from 0.8 */ 0 0 40px rgba(255, 255, 255, 0.4),
-          /* Reduced from 0.6 */ 0 0 80px rgba(255, 255, 255, 0.25),
-          /* Reduced from 0.4 */ 0 20px 40px rgba(0, 0, 0, 0.3); /* Kept the dark depth */
+          0 0 40px rgba(255, 255, 255, 0.4), 0 0 80px rgba(255, 255, 255, 0.25),
+          0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+      .swiper-button-prev,
+      .swiper-button-next {
+        color: #7c3aed !important;
+      }
+      .swiper-pagination-bullet-active {
+        background: #7c3aed !important;
+      }
+      .dark {
+        background-color: #111827; /* gray-900 */
+        color: #f3f4f6; /* gray-100 */
+      }
+      .dark .bg-white {
+        background-color: #1f2937; /* gray-800 */
+      }
+      .dark .bg-gray-50 {
+        background-color: #111827; /* gray-900 */
+      }
+      .dark .text-gray-800 {
+        color: #f3f4f6; /* gray-100 */
+      }
+      .dark .text-gray-600 {
+        color: #d1d5db; /* gray-300 */
+      }
+      .dark .bg-purple-50 {
+        background-color: #4c1d95; /* purple-950 */
+      }
+      .dark .bg-purple-600 {
+        background-color: #7c3aed; /* purple-500 */
+      }
+      .dark .bg-gray-100 {
+        background-color: #1f2937; /* gray-800 */
+      }
+      .dark nav {
+        background-color: #1f2937; /* gray-800 */
+      }
+      .dark .text-purple-600 {
+        color: #c084fc; /* purple-400 */
+      }
+      .dark .text-gray-700 {
+        color: #f3f4f6 !important; /* gray-100 – white-ish for readability */
+      }
+      .dark .text-green-600 {
+        color: #34d399 !important; /* green-400 – brighter green for checkmarks */
+      }
+      .dark .text-gray-400 {
+        color: #9ca3af !important; /* gray-500 – visible gray for ✗ */
+      }
+      .dark thead tr {
+        background-color: #4c1d95 !important; /* purple-950 for header */
+        color: #f3f4f6 !important;
+      }
+      .dark .bg-purple-100 {
+        background-color: #4c1d95 !important;
+      }
+      .dark .bg-purple-200 {
+        background-color: #7c3aed !important;
+      }
+      @media (max-width: 767px) {
+        #themeToggle {
+          display: none;
+        }
+      }
+      .dark #themeToggle {
+        background-color: #374151; /* gray-700 */
+        color: #f3f4f6; /* gray-100 */
+      }
+      .dark #themeToggle:hover {
+        background-color: #4b5563; /* gray-600 */
+      }
+      /* Force mobile menu to respect dark mode even when hidden */
+      #mobileMenu {
+        background-color: white; /* light mode default */
+      }
+      .dark #mobileMenu {
+        background-color: #1f2937; /* gray-800 */
+        border-color: #374151; /* gray-700 */
+      }
+
+      /* Mobile toggle button in dark mode */
+      .dark #themeToggleMobile {
+        background-color: #374151 !important; /* gray-700 */
+        color: #f3f4f6 !important; /* gray-100 */
+      }
+      .dark #themeToggleMobile:hover {
+        background-color: #4b5563 !important; /* gray-600 */
+      }
+
+      /* Icons inside mobile toggle */
+      #sunIconMobile,
+      #moonIconMobile {
+        stroke: currentColor; /* inherit text color */
+      }
+      /* Dark mode fixes for Swiper pagination dots */
+      .dark .swiper-pagination-bullet {
+        background: #4b5563 !important; /* gray-600 - visible gray in dark mode */
+        opacity: 0.6 !important;
+      }
+
+      .dark .swiper-pagination-bullet-active {
+        background: #c084fc !important; /* purple-400 - matches your accent color */
+        opacity: 1 !important;
       }
     </style>
   </head>
@@ -68,7 +214,6 @@
       <div
         class="container mx-auto px-6 py-5 flex justify-between items-center"
       >
-        <!-- Logo -->
         <a href="/" class="flex items-center space-x-3">
           <img
             src="images/app-icon.png"
@@ -77,27 +222,62 @@
           />
           <span class="text-2xl font-bold text-purple-600">Payback</span>
         </a>
+        <!-- Group menu + toggle on right -->
+        <div class="flex items-center space-x-6 md:space-x-10">
+          <ul class="hidden md:flex space-x-10 text-gray-600 font-medium">
+            <!-- Your menu items -->
+            <li>
+              <a href="#features" class="hover:text-purple-600 transition"
+                >Features</a
+              >
+            </li>
+            <li>
+              <a href="privacy.html" class="hover:text-purple-600 transition"
+                >Privacy</a
+              >
+            </li>
+            <li>
+              <a href="support.html" class="hover:text-purple-600 transition"
+                >Support</a
+              >
+            </li>
+          </ul>
+          <!-- Theme Toggle Button – FIXED with icons -->
+          <button
+            id="themeToggle"
+            class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+          >
+            <svg
+              id="sunIcon"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+            <svg
+              id="moonIcon"
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+          </button>
+        </div>
 
-        <!-- Desktop Nav -->
-        <ul class="hidden md:flex space-x-10 text-gray-600 font-medium">
-          <li>
-            <a href="#features" class="hover:text-purple-600 transition"
-              >Features</a
-            >
-          </li>
-          <li>
-            <a href="privacy.html" class="hover:text-purple-600 transition"
-              >Privacy</a
-            >
-          </li>
-          <li>
-            <a href="support.html" class="hover:text-purple-600 transition"
-              >Support</a
-            >
-          </li>
-        </ul>
-
-        <!-- Mobile Menu Button -->
         <button
           id="menuButton"
           class="md:hidden focus:outline-none"
@@ -118,22 +298,67 @@
           </svg>
         </button>
       </div>
-      <!-- Mobile Nav Menu -->
       <div
         id="mobileMenu"
-        class="hidden md:hidden bg-white border-t border-gray-200"
+        class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700"
       >
-        <ul class="flex flex-col px-6 py-6 space-y-6 text-gray-700 font-medium">
-          <li>
-            <a href="#features" class="block hover:text-purple-600">Features</a>
+        <ul
+          class="flex flex-col px-6 py-6 space-y-6 text-gray-700 dark:text-gray-300 font-medium items-end"
+        >
+          <!-- Dark mode toggle inside mobile menu -->
+          <li class="w-full flex justify-end">
+            <button
+              id="themeToggleMobile"
+              class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+            >
+              <svg
+                id="sunIconMobile"
+                class="w-6 h-6 hidden"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+              <svg
+                id="moonIconMobile"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            </button>
           </li>
           <li>
-            <a href="privacy.html" class="block hover:text-purple-600"
+            <a
+              href="#features"
+              class="block hover:text-purple-600 dark:hover:text-purple-400"
+              >Features</a
+            >
+          </li>
+          <li>
+            <a
+              href="privacy.html"
+              class="block hover:text-purple-600 dark:hover:text-purple-400"
               >Privacy</a
             >
           </li>
           <li>
-            <a href="support.html" class="block hover:text-purple-600"
+            <a
+              href="support.html"
+              class="block hover:text-purple-600 dark:hover:text-purple-400"
               >Support</a
             >
           </li>
@@ -143,149 +368,490 @@
 
     <!-- Hero -->
     <section
-      class="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-32"
+      class="bg-gradient-to-br from-purple-700 via-indigo-700 to-purple-900 text-white py-40 relative overflow-hidden"
     >
-      <div class="container mx-auto px-6 text-center max-w-4xl">
-        <h1 class="text-5xl md:text-6xl font-extrabold mb-6">
-          Payback – Debt Tracker for iOS
-        </h1>
-        <p class="text-xl md:text-2xl mb-10 opacity-90 leading-relaxed">
-          The simplest way to track money you’ve lent or borrowed, see who owes
-          you, and stay on top of repayments.
+      <div class="container mx-auto px-6 text-center max-w-5xl">
+        <h1 class="text-6xl md:text-7xl font-extrabold mb-6">Payback</h1>
+        <p class="text-2xl md:text-3xl mb-10 opacity-90 leading-relaxed">
+          Track debts you owe & are owed — with progress bars, exports, stats,
+          and full control.
         </p>
-        <div class="mx-auto h-40 w-40 mb-10 flex items-center justify-center">
+        <div class="mx-auto h-40 w-40 mb-12 flex items-center justify-center">
           <img
             src="images/app-icon.png"
             alt="Payback App Icon"
-            class="h-32 w-32 rounded-3xl shadow-2xl glow-effect"
+            class="h-32 w-32 rounded-3xl glow-effect"
           />
         </div>
-
-        <!-- Replace the old <a> button with this -->
         <a
           href="https://apps.apple.com/app/payback-debt-tracker/id6756201066"
           target="_blank"
-          class="inline-block transform hover:scale-105 transition duration-300"
+          class="block w-max mx-auto"
         >
           <img
-            src="images/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
+            src="images/app-store-badge.svg"
             alt="Download on the App Store"
-            class="h-16 md:h-20 drop-shadow-2xl"
+            class="h-16 md:h-20 hover:scale-105 transition-transform"
           />
         </a>
         <p class="mt-6 text-white/90 text-lg font-medium">
           Available on iPhone · Requires iOS 17.2 or later
         </p>
-        <div
-          class="mt-12 text-gray-200 max-w-3xl mx-auto text-lg leading-relaxed"
-        >
-          Payback is a private debt tracker app for iPhone that helps you track
-          money owed between friends, family, and roommates. Record partial
-          payments, set reminders, and always know where you stand —
-          <a href="privacy.html" class="underline hover:text-white">
-            without accounts or data collection </a
-          >.
-        </div>
       </div>
     </section>
 
-    <!-- Features – Perfect Alternating Layout with Consistent Mobile Stacking (Image Always Top on Mobile) -->
-    <section id="features">
-      <!-- 1. Image on the RIGHT on desktop -->
-      <div class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-          <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-1 text-center md:text-left">
-              <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                Track debts in seconds
-              </h2>
-              <p class="text-xl text-gray-600 leading-relaxed">
-                Add a new debt with just a name, amount, and optional note.
-                Everything is clear at a glance — no spreadsheets needed.
-              </p>
-            </div>
-            <div class="order-1 md:order-2">
-              <img
-                src="images/1.png"
-                alt="Adding a debt in the Payback debt tracker app"
-                class="w-full max-w-lg mx-auto rounded-3xl feature-img"
-                loading="lazy"
-              />
-            </div>
+    <!-- What's New Highlights -->
+    <section class="py-24 bg-white">
+      <div class="container mx-auto px-6 max-w-6xl">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+          What's New
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div
+            class="bg-purple-50 p-8 rounded-2xl shadow-lg text-center fade-in"
+          >
+            <h3 class="text-2xl font-bold mb-4">Export Reports</h3>
+            <p class="text-gray-600">
+              Generate CSV or PDF reports in seconds — perfect for sharing or
+              taxes.
+            </p>
+          </div>
+          <div
+            class="bg-purple-50 p-8 rounded-2xl shadow-lg text-center fade-in"
+          >
+            <h3 class="text-2xl font-bold mb-4">Statistics & Charts</h3>
+            <p class="text-gray-600">
+              Visualise your net balance, debt breakdown, and trends with
+              beautiful charts.
+            </p>
+          </div>
+          <div
+            class="bg-purple-50 p-8 rounded-2xl shadow-lg text-center fade-in"
+          >
+            <h3 class="text-2xl font-bold mb-4">Partial Payments & Progress</h3>
+            <p class="text-gray-600">
+              Add payments, watch progress bars fill up, and track history.
+            </p>
+          </div>
+          <div
+            class="bg-purple-50 p-8 rounded-2xl shadow-lg text-center fade-in"
+          >
+            <h3 class="text-2xl font-bold mb-4">90+ Currencies</h3>
+            <p class="text-gray-600">
+              Support for multiple currencies with fixed or live rates.
+            </p>
+          </div>
+          <div
+            class="bg-purple-50 p-8 rounded-2xl shadow-lg text-center fade-in"
+          >
+            <h3 class="text-2xl font-bold mb-4">Categories & Filters</h3>
+            <p class="text-gray-600">
+              Organise debts with custom & built-in categories.
+            </p>
+          </div>
+          <div
+            class="bg-purple-50 p-8 rounded-2xl shadow-lg text-center fade-in"
+          >
+            <h3 class="text-2xl font-bold mb-4">Due Dates & Reminders</h3>
+            <p class="text-gray-600">
+              Never miss a payment with custom reminders.
+            </p>
           </div>
         </div>
+        <p class="text-center mt-12 text-xl text-gray-600">
+          Free version is powerful — Premium unlocks exports, stats, live rates,
+          photos, interest, and more.
+        </p>
       </div>
+    </section>
 
-      <!-- 2. Image on the LEFT on desktop -->
-      <div class="py-24 bg-gray-50">
-        <div class="container mx-auto px-6 max-w-6xl">
-          <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-2 text-center md:text-left">
-              <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                Never forget with smart reminders
-              </h2>
-              <p class="text-xl text-gray-600 leading-relaxed">
-                Set optional due dates and get gentle notifications when it’s
-                time to collect or pay back.
-              </p>
+    <!-- Free vs Premium Comparison -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <h3 class="text-3xl font-bold text-center mb-8">Free vs Premium</h3>
+        <div class="overflow-x-auto">
+          <table
+            class="w-full text-left border-collapse bg-white rounded-xl shadow-lg overflow-hidden"
+          >
+            <thead>
+              <tr class="bg-purple-100 text-purple-800">
+                <th class="p-5 font-semibold">Feature</th>
+                <th class="p-5 text-center font-semibold">Free</th>
+                <th class="p-5 text-center font-semibold bg-purple-200">
+                  Premium
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <tr class="border-t">
+                <td class="p-5">Unlimited debt tracking</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t bg-gray-50">
+                <td class="p-5">Partial payments & progress bars</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t">
+                <td class="p-5">90+ currencies</td>
+                <td class="p-5 text-center text-gray-400">✗</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t bg-gray-50">
+                <td class="p-5">Live exchange rates</td>
+                <td class="p-5 text-center text-gray-400">✗</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t">
+                <td class="p-5">Export reports (CSV & PDF)</td>
+                <td class="p-5 text-center text-gray-400">✗</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t bg-gray-50">
+                <td class="p-5">Statistics & charts</td>
+                <td class="p-5 text-center text-gray-400">✗</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t">
+                <td class="p-5">Due dates & custom reminders</td>
+                <td class="p-5 text-center text-gray-400">✗</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t bg-gray-50">
+                <td class="p-5">Photo receipts & attachments</td>
+                <td class="p-5 text-center text-gray-400">✗</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t">
+                <td class="p-5">Payment history details</td>
+                <td class="p-5 text-center text-gray-400">✗</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t bg-gray-50">
+                <td class="p-5">Interest calculation</td>
+                <td class="p-5 text-center text-gray-400">✗</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+              <tr class="border-t">
+                <td class="p-5">Custom categories</td>
+                <td class="p-5 text-center text-gray-400">✗</td>
+                <td class="p-5 text-center text-green-600 font-bold">✓</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-center mt-8 text-gray-600">
+          More features are always being added!
+        </p>
+      </div>
+    </section>
+
+    <!-- Features: Carousel on Mobile, Vertical on Desktop -->
+    <section id="features" class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-12">
+          Key Features
+        </h2>
+
+        <!-- Mobile Carousel (hidden on desktop) -->
+        <div class="block md:hidden">
+          <div class="swiper features-swiper">
+            <div class="swiper-wrapper">
+              <!-- Slide 1 -->
+              <div class="swiper-slide px-4">
+                <div class="text-center">
+                  <h3 class="text-3xl font-bold mb-4">Track debts in a snap</h3>
+                  <p class="text-lg text-gray-600 mb-6">
+                    Search instantly, see totals at a glance, and organise
+                    everything effortlessly.
+                  </p>
+                  <img
+                    src="images/screenshot-1-main-list.png"
+                    alt="Main debt list"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="swiper-slide px-4">
+                <div class="text-center">
+                  <h3 class="text-3xl font-bold mb-4">
+                    Partial payments with progress
+                  </h3>
+                  <p class="text-lg text-gray-600 mb-6">
+                    Add payments, watch progress bars fill up, and track
+                    history.
+                  </p>
+                  <img
+                    src="images/screenshot-2-partial-payments.png"
+                    alt="Partial payments"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="swiper-slide px-4">
+                <div class="text-center">
+                  <h3 class="text-3xl font-bold mb-4">Visualise statistics</h3>
+                  <p class="text-lg text-gray-600 mb-6">
+                    Pie charts and breakdowns show your net balance and debt
+                    distribution.
+                  </p>
+                  <img
+                    src="images/screenshot-3-stats.png"
+                    alt="Statistics and charts"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <!-- Slide 4 -->
+              <div class="swiper-slide px-4">
+                <div class="text-center">
+                  <h3 class="text-3xl font-bold mb-4">Multiple currencies</h3>
+                  <p class="text-lg text-gray-600 mb-6">
+                    90+ currencies supported - more always being added.
+                  </p>
+                  <img
+                    src="images/screenshot-4-currencies.png"
+                    alt="Currency selection"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <!-- Slide 5 -->
+              <div class="swiper-slide px-4">
+                <div class="text-center">
+                  <h3 class="text-3xl font-bold mb-4">
+                    Organise with categories
+                  </h3>
+                  <p class="text-lg text-gray-600 mb-6">
+                    Filter and label debts for easy tracking — custom options in
+                    Premium.
+                  </p>
+                  <img
+                    src="images/screenshot-5-categories.png"
+                    alt="Category filter"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <!-- Slide 6 -->
+              <div class="swiper-slide px-4">
+                <div class="text-center">
+                  <h3 class="text-3xl font-bold mb-4">Never miss a due date</h3>
+                  <p class="text-lg text-gray-600 mb-6">
+                    Set reminders and custom times — stay on top of every
+                    payment.
+                  </p>
+                  <img
+                    src="images/screenshot-6-due-date.png"
+                    alt="Due date and reminders"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <!-- Slide 7 -->
+              <div class="swiper-slide px-4">
+                <div class="text-center">
+                  <h3 class="text-3xl font-bold mb-4">Payment history</h3>
+                  <p class="text-lg text-gray-600 mb-6">
+                    See every payment, date, and note — full transparency.
+                  </p>
+                  <img
+                    src="images/screenshot-7-history.png"
+                    alt="Payment history"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
-            <div class="order-1 md:order-1">
-              <img
-                src="images/2.png"
-                alt="Reminders in Payback debt tracker app"
-                class="w-full max-w-lg mx-auto rounded-3xl feature-img"
-                loading="lazy"
-              />
-            </div>
+            <!-- Arrows & Pagination -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
-      </div>
 
-      <!-- 3. Image on the RIGHT on desktop -->
-      <div class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-          <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-1 text-center md:text-left">
-              <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                Your data stays private — always
-              </h2>
-              <p class="text-xl text-gray-600 leading-relaxed">
-                No sign-up. No data collection. Everything lives safely on your
-                iPhone.
-              </p>
-            </div>
-            <div class="order-1 md:order-2">
-              <img
-                src="images/3.png"
-                alt="Privacy first design in Payback debt tracker app"
-                class="w-full max-w-lg mx-auto rounded-3xl feature-img"
-                loading="lazy"
-              />
+        <!-- Desktop: Vertical Alternating Layout -->
+        <div class="hidden md:block">
+          <!-- Feature 1 - Image RIGHT (text left) -->
+          <div class="py-20">
+            <div class="container mx-auto px-6 max-w-6xl">
+              <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 text-center md:text-left">
+                  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Track debts in a snap
+                  </h2>
+                  <p class="text-xl text-gray-600 leading-relaxed">
+                    Search instantly, see totals at a glance, and organise
+                    everything effortlessly.
+                  </p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img
+                    src="images/screenshot-1-main-list.png"
+                    alt="Main debt list"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl feature-img"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- 4. Image on the LEFT on desktop -->
-      <div class="py-24 bg-gray-50">
-        <div class="container mx-auto px-6 max-w-6xl">
-          <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div class="order-2 md:order-2 text-center md:text-left">
-              <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                Beautiful history & insights
-              </h2>
-              <p class="text-xl text-gray-600 leading-relaxed">
-                See your full payback history, filter by person, and track your
-                net balance over time.
-              </p>
+          <!-- Feature 2 - Image LEFT (image left) -->
+          <div class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-6xl">
+              <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                  <img
+                    src="images/screenshot-2-partial-payments.png"
+                    alt="Partial payments"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl feature-img"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="order-1 md:order-2 text-center md:text-left">
+                  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Partial payments with progress
+                  </h2>
+                  <p class="text-xl text-gray-600 leading-relaxed">
+                    Add payments, watch progress bars fill up, and track
+                    history.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="order-1 md:order-1">
-              <img
-                src="images/4.png"
-                alt="History and insights screen in Payback debt tracker app"
-                class="w-full max-w-lg mx-auto rounded-3xl feature-img"
-                loading="lazy"
-              />
+          </div>
+
+          <!-- Feature 3 - Image RIGHT (text left) -->
+          <div class="py-20">
+            <div class="container mx-auto px-6 max-w-6xl">
+              <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 text-center md:text-left">
+                  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Visualise statistics
+                  </h2>
+                  <p class="text-xl text-gray-600 leading-relaxed">
+                    Pie charts and breakdowns show your net balance and debt
+                    distribution.
+                  </p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img
+                    src="images/screenshot-3-stats.png"
+                    alt="Statistics"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl feature-img"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 4 - Image LEFT (image left) -->
+          <div class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-6xl">
+              <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                  <img
+                    src="images/screenshot-4-currencies.png"
+                    alt="Currency selection"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl feature-img"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="order-1 md:order-2 text-center md:text-left">
+                  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Multiple currencies
+                  </h2>
+                  <p class="text-xl text-gray-600 leading-relaxed">
+                    90+ currencies supported - more always being added.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 5 - Image RIGHT (text left) -->
+          <div class="py-20">
+            <div class="container mx-auto px-6 max-w-6xl">
+              <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 text-center md:text-left">
+                  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Organise with categories
+                  </h2>
+                  <p class="text-xl text-gray-600 leading-relaxed">
+                    Filter and label debts for easy tracking — custom options in
+                    Premium.
+                  </p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img
+                    src="images/screenshot-5-categories.png"
+                    alt="Category filter"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl feature-img"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 6 - Image LEFT (image left) -->
+          <div class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-6xl">
+              <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                  <img
+                    src="images/screenshot-6-due-date.png"
+                    alt="Due date and reminders"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl feature-img"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="order-1 md:order-2 text-center md:text-left">
+                  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Never miss a due date
+                  </h2>
+                  <p class="text-xl text-gray-600 leading-relaxed">
+                    Set reminders and custom times — stay on top of every
+                    payment.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature 7 - Image RIGHT (text left) -->
+          <div class="py-20">
+            <div class="container mx-auto px-6 max-w-6xl">
+              <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 text-center md:text-left">
+                  <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Payment history
+                  </h2>
+                  <p class="text-xl text-gray-600 leading-relaxed">
+                    See every payment, date, and note — full transparency.
+                  </p>
+                </div>
+                <div class="order-1 md:order-2">
+                  <img
+                    src="images/screenshot-7-history.png"
+                    alt="Payment history"
+                    class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl feature-img"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -294,25 +860,25 @@
 
     <!-- Final CTA -->
     <section
-      class="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-32 text-center"
+      class="bg-gradient-to-br from-purple-700 to-indigo-900 text-white py-32 text-center"
     >
       <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-8">
-          Ready to stop losing track of money?
+        <h2 class="text-5xl font-extrabold mb-8">
+          Take Control of Your Debts Today
         </h2>
         <p class="text-xl mb-12 opacity-90">
-          Join thousands who finally know exactly who owes them — and who they
-          owe.
+          Simple, private, and powerful. Free version is unlimited — Premium
+          takes it further.
         </p>
         <a
           href="https://apps.apple.com/app/payback-debt-tracker/id6756201066"
           target="_blank"
-          class="inline-block transform hover:scale-105 transition duration-300"
+          class="block w-max mx-auto"
         >
           <img
-            src="images/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg"
+            src="images/app-store-badge.svg"
             alt="Download on the App Store"
-            class="h-16 md:h-20 drop-shadow-2xl"
+            class="h-16 md:h-20 hover:scale-105 transition-transform"
           />
         </a>
         <p class="mt-6 text-white/90 text-lg font-medium">
@@ -320,10 +886,6 @@
         </p>
       </div>
     </section>
-
-    <p class="text-center text-gray-500 text-sm mt-16">
-      Download Payback on the Apple App Store.
-    </p>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12">
@@ -336,7 +898,6 @@
           />
           <span class="text-2xl font-bold text-white">Payback</span>
         </div>
-
         <p class="mb-6">© 2025 Payback. All rights reserved.</p>
         <ul class="flex justify-center space-x-8">
           <li>
@@ -352,12 +913,167 @@
         </ul>
       </div>
     </footer>
+
+    <!-- Scripts -->
     <script>
+      // Mobile menu toggle
       const menuButton = document.getElementById('menuButton');
       const mobileMenu = document.getElementById('mobileMenu');
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
 
-      menuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
+      // Fade-in for "What's New" cards
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const fadeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          });
+        },
+        { threshold: 0.1 }
+      );
+      fadeElements.forEach((el) => fadeObserver.observe(el));
+    </script>
+
+    <!-- Swiper only on mobile -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (window.innerWidth < 768) {
+          new Swiper('.features-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: { el: '.swiper-pagination', clickable: true },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            },
+            autoplay: { delay: 5000, disableOnInteraction: false },
+          });
+        }
+      });
+    </script>
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      class="fixed bottom-6 right-6 bg-purple-600 text-white p-4 rounded-full shadow-lg hidden hover:bg-purple-700 transition-all duration-300 z-50 focus:outline-none"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        ></path>
+      </svg>
+    </button>
+
+    <script>
+      // Show/hide back to top button
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          backToTop.classList.remove('hidden');
+        } else {
+          backToTop.classList.add('hidden');
+        }
+      });
+
+      // Smooth scroll to top
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+    <script>
+      // Theme toggle function
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.theme = 'light';
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.theme = 'dark';
+        }
+        updateIcons();
+      }
+
+      // Update icons for both desktop and mobile
+      function updateIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+
+        // Desktop
+        const sunDesktop = document.getElementById('sunIcon');
+        const moonDesktop = document.getElementById('moonIcon');
+        if (sunDesktop && moonDesktop) {
+          sunDesktop.classList.toggle('hidden', isDark);
+          moonDesktop.classList.toggle('hidden', !isDark);
+        }
+
+        // Mobile
+        const sunMobile = document.getElementById('sunIconMobile');
+        const moonMobile = document.getElementById('moonIconMobile');
+        if (sunMobile && moonMobile) {
+          sunMobile.classList.toggle('hidden', isDark);
+          moonMobile.classList.toggle('hidden', !isDark);
+        }
+      }
+
+      // Attach listeners
+      document
+        .getElementById('themeToggle')
+        ?.addEventListener('click', toggleTheme);
+      document
+        .getElementById('themeToggleMobile')
+        ?.addEventListener('click', toggleTheme);
+
+      // Initial state
+      updateIcons();
+
+      // Re-update icons when mobile menu opens (in case it's hidden on load)
+      document.getElementById('menuButton')?.addEventListener('click', () => {
+        setTimeout(updateIcons, 0); // small delay to ensure DOM is updated
+      });
+    </script>
+    <script>
+      // Auto-close mobile menu when clicking outside
+      document.addEventListener('DOMContentLoaded', function () {
+        const menuButton = document.getElementById('menuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (!menuButton || !mobileMenu) return;
+
+        // Function to check if click is inside menu or button
+        function isClickInsideMenu(event) {
+          return (
+            mobileMenu.contains(event.target) ||
+            menuButton.contains(event.target)
+          );
+        }
+
+        // Close menu on outside click
+        document.addEventListener('click', function (event) {
+          // Only run if menu is currently open
+          if (!mobileMenu.classList.contains('hidden')) {
+            if (!isClickInsideMenu(event)) {
+              mobileMenu.classList.add('hidden');
+            }
+          }
+        });
+
+        // Optional: Prevent clicks inside the menu from closing it
+        mobileMenu.addEventListener('click', function (event) {
+          event.stopPropagation();
+        });
       });
     </script>
   </body>

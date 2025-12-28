@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,9 +21,152 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Dark mode support -->
+    <script>
+      // On page load or when changing themes
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+
     <style>
       body {
         font-family: 'Inter', sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Dark mode styles – plain CSS */
+      .dark {
+        background-color: #111827; /* gray-900 */
+        color: #f3f4f6; /* gray-100 */
+      }
+      .dark .bg-white {
+        background-color: #1f2937; /* gray-800 */
+      }
+      .dark .bg-gray-50 {
+        background-color: #111827; /* gray-900 */
+      }
+      .dark .text-gray-800 {
+        color: #f3f4f6; /* gray-100 */
+      }
+      .dark .text-gray-600 {
+        color: #d1d5db; /* gray-300 */
+      }
+      .dark .bg-purple-50 {
+        background-color: #4c1d95; /* purple-950 */
+      }
+      .dark .bg-purple-600 {
+        background-color: #7c3aed; /* purple-500 */
+      }
+      .dark .bg-gray-100 {
+        background-color: #1f2937; /* gray-800 */
+      }
+      .dark nav {
+        background-color: #1f2937; /* gray-800 */
+      }
+      .dark .text-purple-600 {
+        color: #c084fc; /* purple-400 */
+      }
+      .dark .text-gray-700 {
+        color: #f3f4f6 !important; /* gray-100 – white-ish for readability */
+      }
+      .dark .text-green-600 {
+        color: #34d399 !important; /* green-400 – brighter green for checkmarks */
+      }
+      .dark .text-gray-400 {
+        color: #9ca3af !important; /* gray-500 – visible gray for ✗ */
+      }
+      .dark thead tr {
+        background-color: #4c1d95 !important; /* purple-950 for header */
+        color: #f3f4f6 !important;
+      }
+      .dark .bg-purple-100 {
+        background-color: #4c1d95 !important;
+      }
+      .dark .bg-purple-200 {
+        background-color: #7c3aed !important;
+      }
+      .dark footer {
+        background-color: #111827; /* gray-900 */
+      }
+      .dark .bg-gray-900 {
+        background-color: #030712; /* darker gray-950 */
+      }
+      .dark .prose {
+        color: #f3f4f6;
+      }
+      .dark .prose h1,
+      .dark .prose h2,
+      .dark .prose h3 {
+        color: #f3f4f6;
+      }
+      .dark .prose a {
+        color: #c084fc;
+      }
+      .dark .prose a:hover {
+        color: #a78bfa;
+      }
+
+      /* Hide desktop toggle on mobile */
+      @media (max-width: 767px) {
+        #themeToggle {
+          display: none;
+        }
+      }
+
+      /* Desktop toggle in dark mode */
+      .dark #themeToggle {
+        background-color: #374151 !important; /* gray-700 */
+        color: #f3f4f6 !important; /* gray-100 */
+      }
+      .dark #themeToggle:hover {
+        background-color: #4b5563 !important; /* gray-600 */
+      }
+
+      /* Force mobile menu to respect dark mode even when hidden */
+      #mobileMenu {
+        background-color: white; /* light mode default */
+      }
+      .dark #mobileMenu {
+        background-color: #1f2937; /* gray-800 */
+        border-color: #374151; /* gray-700 */
+      }
+
+      /* Mobile toggle button in dark mode */
+      .dark #themeToggleMobile {
+        background-color: #374151 !important; /* gray-700 */
+        color: #f3f4f6 !important; /* gray-100 */
+      }
+      .dark #themeToggleMobile:hover {
+        background-color: #4b5563 !important; /* gray-600 */
+      }
+
+      /* Icons inside mobile toggle */
+      #sunIconMobile,
+      #moonIconMobile {
+        stroke: currentColor; /* inherit text color */
+      }
+
+      /* Dark mode for form inputs and textarea */
+      .dark input,
+      .dark textarea {
+        background-color: #1f2937 !important; /* gray-800 */
+        color: #f3f4f6 !important; /* gray-100 */
+        border-color: #374151 !important; /* gray-700 */
+      }
+      .dark input:focus,
+      .dark textarea:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.5) !important; /* purple-400 with opacity */
       }
     </style>
   </head>
@@ -33,7 +176,6 @@
       <div
         class="container mx-auto px-6 py-5 flex justify-between items-center"
       >
-        <!-- Logo -->
         <a href="/" class="flex items-center space-x-3">
           <img
             src="images/app-icon.png"
@@ -42,29 +184,64 @@
           />
           <span class="text-2xl font-bold text-purple-600">Payback</span>
         </a>
+        <!-- Group menu + toggle on right -->
+        <div class="flex items-center space-x-6 md:space-x-10">
+          <ul class="hidden md:flex space-x-10 text-gray-600 font-medium">
+            <!-- Your menu items -->
+            <li>
+              <a
+                href="index.html#features"
+                class="hover:text-purple-600 transition"
+                >Features</a
+              >
+            </li>
+            <li>
+              <a href="privacy.html" class="hover:text-purple-600 transition"
+                >Privacy</a
+              >
+            </li>
+            <li>
+              <a href="support.html" class="hover:text-purple-600 transition"
+                >Support</a
+              >
+            </li>
+          </ul>
+          <!-- Theme Toggle Button – FIXED with icons -->
+          <button
+            id="themeToggle"
+            class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+          >
+            <svg
+              id="sunIcon"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+            <svg
+              id="moonIcon"
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+          </button>
+        </div>
 
-        <!-- Desktop Nav -->
-        <ul class="hidden md:flex space-x-10 text-gray-600 font-medium">
-          <li>
-            <a
-              href="index.html#features"
-              class="hover:text-purple-600 transition"
-              >Features</a
-            >
-          </li>
-          <li>
-            <a href="privacy.html" class="hover:text-purple-600 transition"
-              >Privacy</a
-            >
-          </li>
-          <li>
-            <a href="support.html" class="hover:text-purple-600 transition"
-              >Support</a
-            >
-          </li>
-        </ul>
-
-        <!-- Mobile Menu Button -->
         <button
           id="menuButton"
           class="md:hidden focus:outline-none"
@@ -85,24 +262,67 @@
           </svg>
         </button>
       </div>
-      <!-- Mobile Nav Menu -->
       <div
         id="mobileMenu"
-        class="hidden md:hidden bg-white border-t border-gray-200"
+        class="hidden md:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700"
       >
-        <ul class="flex flex-col px-6 py-6 space-y-6 text-gray-700 font-medium">
+        <ul
+          class="flex flex-col px-6 py-6 space-y-6 text-gray-700 dark:text-gray-300 font-medium items-end"
+        >
+          <!-- Dark mode toggle inside mobile menu -->
+          <li class="w-full flex justify-end">
+            <button
+              id="themeToggleMobile"
+              class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+            >
+              <svg
+                id="sunIconMobile"
+                class="w-6 h-6 hidden"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                />
+              </svg>
+              <svg
+                id="moonIconMobile"
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                />
+              </svg>
+            </button>
+          </li>
           <li>
-            <a href="index.html#features" class="block hover:text-purple-600"
+            <a
+              href="index.html#features"
+              class="block hover:text-purple-600 dark:hover:text-purple-400"
               >Features</a
             >
           </li>
           <li>
-            <a href="privacy.html" class="block hover:text-purple-600"
+            <a
+              href="privacy.html"
+              class="block hover:text-purple-600 dark:hover:text-purple-400"
               >Privacy</a
             >
           </li>
           <li>
-            <a href="support.html" class="block hover:text-purple-600"
+            <a
+              href="support.html"
+              class="block hover:text-purple-600 dark:hover:text-purple-400"
               >Support</a
             >
           </li>
@@ -200,12 +420,137 @@
         </ul>
       </div>
     </footer>
+
+    <!-- Scripts -->
     <script>
       const menuButton = document.getElementById('menuButton');
       const mobileMenu = document.getElementById('mobileMenu');
 
       menuButton.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      class="fixed bottom-6 right-6 bg-purple-600 text-white p-4 rounded-full shadow-lg hidden hover:bg-purple-700 transition-all duration-300 z-50 focus:outline-none"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"
+        ></path>
+      </svg>
+    </button>
+
+    <script>
+      // Show/hide back to top button
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+          backToTop.classList.remove('hidden');
+        } else {
+          backToTop.classList.add('hidden');
+        }
+      });
+
+      // Smooth scroll to top
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+
+    <!-- Theme Toggle Script -->
+    <script>
+      // Theme toggle function
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.theme = 'light';
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.theme = 'dark';
+        }
+        updateIcons();
+      }
+
+      // Update icons for both desktop and mobile
+      function updateIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+
+        // Desktop
+        const sunDesktop = document.getElementById('sunIcon');
+        const moonDesktop = document.getElementById('moonIcon');
+        if (sunDesktop && moonDesktop) {
+          sunDesktop.classList.toggle('hidden', isDark);
+          moonDesktop.classList.toggle('hidden', !isDark);
+        }
+
+        // Mobile
+        const sunMobile = document.getElementById('sunIconMobile');
+        const moonMobile = document.getElementById('moonIconMobile');
+        if (sunMobile && moonMobile) {
+          sunMobile.classList.toggle('hidden', isDark);
+          moonMobile.classList.toggle('hidden', !isDark);
+        }
+      }
+
+      // Attach click listeners
+      document
+        .getElementById('themeToggle')
+        ?.addEventListener('click', toggleTheme);
+      document
+        .getElementById('themeToggleMobile')
+        ?.addEventListener('click', toggleTheme);
+
+      // Initial state
+      updateIcons();
+
+      // Re-update when mobile menu opens
+      document.getElementById('menuButton')?.addEventListener('click', () => {
+        setTimeout(updateIcons, 0);
+      });
+    </script>
+    <script>
+      // Auto-close mobile menu when clicking outside
+      document.addEventListener('DOMContentLoaded', function () {
+        const menuButton = document.getElementById('menuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (!menuButton || !mobileMenu) return;
+
+        // Function to check if click is inside menu or button
+        function isClickInsideMenu(event) {
+          return (
+            mobileMenu.contains(event.target) ||
+            menuButton.contains(event.target)
+          );
+        }
+
+        // Close menu on outside click
+        document.addEventListener('click', function (event) {
+          // Only run if menu is currently open
+          if (!mobileMenu.classList.contains('hidden')) {
+            if (!isClickInsideMenu(event)) {
+              mobileMenu.classList.add('hidden');
+            }
+          }
+        });
+
+        // Optional: Prevent clicks inside the menu from closing it
+        mobileMenu.addEventListener('click', function (event) {
+          event.stopPropagation();
+        });
       });
     </script>
   </body>
