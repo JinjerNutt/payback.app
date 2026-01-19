@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
@@ -65,9 +65,9 @@
       }
     </script>
     <script
-  src="https://cdn.telemetrydeck.com/websdk/telemetrydeck.min.js"
-  data-app-id="<3217D842-BB77-48CD-89C8-7FB1ACD9F5BB>"
-></script>
+      src="https://cdn.telemetrydeck.com/websdk/telemetrydeck.min.js"
+      data-app-id="<3217D842-BB77-48CD-89C8-7FB1ACD9F5BB>"
+    ></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -86,7 +86,9 @@
         scroll-behavior: smooth;
       }
       .feature-img {
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       }
       .feature-img:hover {
@@ -103,8 +105,10 @@
         transform: translateY(0);
       }
       .glow-effect {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
-          0 0 40px rgba(255, 255, 255, 0.4), 0 0 80px rgba(255, 255, 255, 0.25),
+        box-shadow:
+          0 0 20px rgba(255, 255, 255, 0.5),
+          0 0 40px rgba(255, 255, 255, 0.4),
+          0 0 80px rgba(255, 255, 255, 0.25),
           0 20px 40px rgba(0, 0, 0, 0.3);
       }
       .swiper-button-prev,
@@ -937,7 +941,7 @@
             if (entry.isIntersecting) entry.target.classList.add('visible');
           });
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
       );
       fadeElements.forEach((el) => fadeObserver.observe(el));
     </script>
