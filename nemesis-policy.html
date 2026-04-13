@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy – Nemesis DCA Trade Planner</title>
+
+    <meta
+      name="description"
+      content="Nemesis privacy policy. Your API keys and trading data stay on your device."
+    />
+
+    <!-- Keep this page out of search engines -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Dark mode support -->
+    <script>
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .dark {
+        background-color: #111827;
+        color: #f3f4f6;
+      }
+      .dark .bg-white {
+        background-color: #1f2937;
+      }
+      .dark .bg-gray-50 {
+        background-color: #111827;
+      }
+      .dark .text-gray-800 {
+        color: #f3f4f6;
+      }
+      .dark .text-gray-600 {
+        color: #d1d5db;
+      }
+      .dark .text-gray-700 {
+        color: #f3f4f6 !important;
+      }
+      .dark nav {
+        background-color: #1f2937;
+      }
+      .dark .text-purple-600 {
+        color: #c084fc;
+      }
+      .dark #themeToggle {
+        background-color: #374151;
+        color: #f3f4f6;
+      }
+      .dark #themeToggle:hover {
+        background-color: #4b5563;
+      }
+      @media (max-width: 767px) {
+        #themeToggle {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+
+    <!-- Minimal nav — Nemesis branding only, no links back to Payback site -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <img src="images/nemesis-icon.png" alt="Nemesis App Icon" class="h-9 w-9 rounded-xl shadow-md" />
+          <span class="text-2xl font-bold text-purple-600">Nemesis</span>
+          <span class="text-sm text-gray-400 font-medium hidden sm:inline">DCA Trade Planner</span>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full bg-gray-200 text-gray-800 focus:outline-none hover:bg-gray-300 transition"
+        >
+          <svg id="sunIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moonIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Privacy Policy Content -->
+    <section class="py-24">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-center mb-12">
+          Privacy Policy
+        </h1>
+
+        <div class="prose prose-lg max-w-none text-gray-700 space-y-8">
+          <p class="text-xl leading-relaxed">Last updated: April 2026</p>
+
+          <p class="text-lg">
+            This Privacy Policy applies to the
+            <strong><em>Nemesis – DCA Trade Planner</em></strong> mobile application
+            ("Application"), developed by Joshua Crellin ("Service Provider")
+            and provided as a paid application. The Application is provided "AS IS".
+          </p>
+
+          <h2 class="text-2xl font-bold mt-12">Data Collection and Use</h2>
+          <p class="text-lg">
+            The Application does <strong>not</strong> require users to create
+            accounts or provide any personally identifiable information to function.
+          </p>
+          <p class="text-lg">
+            All data entered into the Application — including exchange API keys,
+            trade settings, and strategy configurations — is stored
+            <strong>locally on your device only</strong>, using standard iOS
+            secure storage. No personal data, API credentials, or trading information
+            is uploaded, synced, or shared with the Service Provider or any
+            external servers.
+          </p>
+          <p class="text-lg">
+            If you delete the Application, all locally stored data is permanently removed.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-12">Exchange API Keys</h2>
+          <p class="text-lg">
+            When you connect a cryptocurrency exchange, the API key and secret you
+            provide are stored exclusively on your device using iOS secure storage.
+            They are transmitted directly from your device to the relevant exchange
+            for the sole purpose of fetching your account balance and placing orders
+            that you explicitly initiate. The Service Provider never receives,
+            stores, or has access to your API credentials.
+          </p>
+          <p class="text-lg">
+            The Application is designed to work with read and trade API permissions
+            only. You should never enable withdrawal permissions on any API key used
+            with this Application.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-12">Third-Party Services</h2>
+          <p class="text-lg">
+            The Application communicates directly with exchange REST APIs (such as
+            Bybit) using credentials stored on your device. These communications
+            are governed by the privacy policies of the respective exchanges.
+          </p>
+          <p class="text-lg">
+            In-app purchases are processed by Apple via the App Store. Apple's
+            privacy policy applies to all purchase transactions.
+          </p>
+          <p class="text-lg">
+            The Application does not integrate any advertising networks, analytics
+            services, or other third-party data processors.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-12">Financial Risk Disclaimer</h2>
+          <p class="text-lg">
+            Nemesis is a <strong>calculator and order placement tool</strong>. It is
+            not a financial advisor, automated trading bot, or investment service.
+            All trading decisions are made by the user. Cryptocurrency trading
+            involves significant risk of loss. The Service Provider accepts no
+            liability for trading losses incurred through use of the Application.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-12">Children's Privacy</h2>
+          <p class="text-lg">
+            The Application is intended for adults who engage in cryptocurrency
+            trading. The Service Provider does not knowingly collect any personally
+            identifiable information from children under the age of 13.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-12">Security</h2>
+          <p class="text-lg">
+            The Service Provider takes reasonable measures to safeguard the
+            information processed by the Application. Because all user data
+            remains on the device, data exposure risks are minimized. Users are
+            responsible for maintaining the security of their own device and
+            exchange API credentials.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-12">Changes to This Policy</h2>
+          <p class="text-lg">
+            This Privacy Policy may be updated from time to time. Any changes
+            will be reflected on this page by updating the "Last updated" date.
+            Continued use of the Application constitutes acceptance of the
+            updated policy.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-12">Consent</h2>
+          <p class="text-lg">
+            By using the Application, you consent to this Privacy Policy.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-12">Contact</h2>
+          <p class="text-lg">
+            If you have any questions about this Privacy Policy, please visit the
+            <a href="nemesis-support.html" class="underline hover:text-purple-600">
+              Nemesis support page</a>.
+          </p>
+
+          <p class="text-lg mt-12 italic">
+            Your API keys never leave your device. That's a design decision, not just a promise.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+      <div class="container mx-auto px-6 text-center">
+        <div class="flex items-center justify-center space-x-3 mb-2">
+          <img src="images/nemesis-icon.png" alt="Nemesis App Icon" class="h-8 w-8 rounded-lg shadow-md" />
+          <span class="text-2xl font-bold text-white">Nemesis</span>
+        </div>
+        <p class="mb-6">DCA Trade Planner</p>
+        <p>© 2026 Joshua Crellin. All rights reserved.</p>
+        <ul class="flex justify-center space-x-8 mt-4">
+          <li>
+            <a href="nemesis-policy.html" class="text-purple-400 font-bold">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="nemesis-support.html" class="hover:text-white transition">Support</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button
+      id="backToTop"
+      class="fixed bottom-6 right-6 bg-purple-600 text-white p-4 rounded-full shadow-lg hidden hover:bg-purple-700 transition-all duration-300 z-50 focus:outline-none"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+      </svg>
+    </button>
+
+    <script>
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('hidden', window.scrollY <= 400);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.documentElement.classList.toggle('dark', !isDark);
+        localStorage.theme = isDark ? 'light' : 'dark';
+        updateIcons();
+      }
+
+      function updateIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.getElementById('sunIcon').classList.toggle('hidden', isDark);
+        document.getElementById('moonIcon').classList.toggle('hidden', !isDark);
+      }
+
+      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+      updateIcons();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Support – Nemesis DCA Trade Planner</title>
+
+    <meta
+      name="description"
+      content="Get help with Nemesis DCA Trade Planner."
+    />
+
+    <!-- Keep this page out of search engines -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Dark mode support -->
+    <script>
+      if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .dark {
+        background-color: #111827;
+        color: #f3f4f6;
+      }
+      .dark .bg-white {
+        background-color: #1f2937;
+      }
+      .dark .bg-gray-50 {
+        background-color: #111827;
+      }
+      .dark .text-gray-800 {
+        color: #f3f4f6;
+      }
+      .dark .text-gray-600 {
+        color: #d1d5db;
+      }
+      .dark .text-gray-700 {
+        color: #f3f4f6 !important;
+      }
+      .dark nav {
+        background-color: #1f2937;
+      }
+      .dark .text-purple-600 {
+        color: #c084fc;
+      }
+      .dark .text-purple-700 {
+        color: #c084fc !important;
+      }
+      .dark .bg-purple-50 {
+        background-color: #4c1d95 !important;
+      }
+      .dark #themeToggle {
+        background-color: #374151;
+        color: #f3f4f6;
+      }
+      .dark #themeToggle:hover {
+        background-color: #4b5563;
+      }
+      @media (max-width: 767px) {
+        #themeToggle {
+          display: none;
+        }
+      }
+      .dark input,
+      .dark textarea {
+        background-color: #1f2937 !important;
+        color: #f3f4f6 !important;
+        border-color: #374151 !important;
+      }
+      .dark input:focus,
+      .dark textarea:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.5) !important;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+
+    <!-- Minimal nav -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <img src="images/nemesis-icon.png" alt="Nemesis App Icon" class="h-9 w-9 rounded-xl shadow-md" />
+          <span class="text-2xl font-bold text-purple-600">Nemesis</span>
+          <span class="text-sm text-gray-400 font-medium hidden sm:inline">DCA Trade Planner</span>
+        </div>
+
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full bg-gray-200 text-gray-800 focus:outline-none hover:bg-gray-300 transition"
+        >
+          <svg id="sunIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="moonIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Support Content -->
+    <section class="py-24">
+      <div class="container mx-auto px-6 max-w-3xl">
+
+        <h1 class="text-4xl md:text-5xl font-extrabold text-center mb-12">
+          We're Here to Help
+        </h1>
+
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12">
+          <p class="text-xl text-gray-600 text-center mb-10">
+            Whether you have a question, found a bug, or just want to say hi —
+            we answer every message personally.
+          </p>
+
+          <form
+            action="https://formspree.io/f/mpwvjaoj"
+            method="POST"
+            class="space-y-8"
+          >
+            <input type="hidden" name="_subject" value="[Nemesis] Support Request" />
+            <div>
+              <label class="block text-lg font-medium mb-2">Your email</label>
+              <input
+                type="email"
+                name="email"
+                required
+                class="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-200"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            <div>
+              <label class="block text-lg font-medium mb-2">Subject</label>
+              <input
+                type="text"
+                name="subject"
+                required
+                class="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-200"
+                placeholder="e.g. Orders not placing"
+              />
+            </div>
+
+            <div>
+              <label class="block text-lg font-medium mb-2">Message</label>
+              <textarea
+                name="message"
+                rows="6"
+                required
+                class="w-full px-5 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-200 resize-none"
+                placeholder="Tell us what's going on…"
+              ></textarea>
+            </div>
+
+            <div class="text-center">
+              <button
+                type="submit"
+                class="bg-purple-600 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-purple-700 transition shadow-lg"
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- FAQ -->
+        <div class="bg-white rounded-2xl shadow-sm p-8 mt-8">
+          <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+
+          <div class="space-y-8 text-gray-700">
+
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Is Nemesis an automated trading bot?</h3>
+              <p>No. Nemesis is a calculator and order placement tool. It calculates a DCA order ladder based on parameters you set, then places limit orders on your exchange when you tap the confirm button. All trading decisions are made by you — nothing happens automatically.</p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Are my API keys safe?</h3>
+              <p>Yes. Your API keys are stored locally on your device using iOS secure storage and are never sent to our servers. They communicate directly between your device and the exchange. You should only ever use read and trade permissions — never enable withdrawals on any API key used with Nemesis.</p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Which exchanges are supported?</h3>
+              <p>Nemesis currently supports live order placement on Bybit. Additional exchanges are available to connect and are being actively developed. Without a connected exchange, you can still use Nemesis as a manual DCA calculator.</p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-2">What is Nemesis Pro?</h3>
+              <p>Nemesis Pro is a one-time purchase that unlocks exchange API connectivity. Without Pro, Nemesis works as a standalone DCA calculator. Pro unlocks the ability to connect your exchange, fetch your live balance, and place orders directly from the app.</p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-2">How do I restore my Pro purchase?</h3>
+              <p>Go to Settings → Nemesis Pro → Restore Purchase. Make sure you're signed in to the same Apple ID used for the original purchase.</p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-2">I connected my exchange but my balance isn't loading.</h3>
+              <p>Check that your API key has read permissions enabled on the exchange side. For Bybit, ensure the key is set up for the Unified Trading Account and that your IP is not restricted (or the restriction is lifted). Try disconnecting and reconnecting the exchange in Settings.</p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-2">What do the DCA strategies mean?</h3>
+              <p>Nemesis includes three built-in strategies (Nemesis I, II, III) that differ in the number of safety orders, step sizes, and position multipliers. You can also create custom strategies in Settings. Each strategy calculates order sizes based on your account risk percentage, so your maximum loss at the stop loss price always equals the risk amount you set.</p>
+            </div>
+
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Is my trading data backed up?</h3>
+              <p>All data is stored locally on your device. If you delete the app or switch devices, your settings and strategies will need to be reconfigured. There is no cloud backup or account system.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="bg-purple-50 rounded-2xl p-8 mt-8">
+          <h2 class="text-xl font-bold mb-3 text-purple-700">Risk Disclaimer</h2>
+          <p class="text-gray-700">
+            Cryptocurrency trading involves significant financial risk. Nemesis is a tool to assist with order placement — it does not provide financial advice and is not liable for trading losses. Always trade within your means and understand the risks involved in leveraged trading.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+      <div class="container mx-auto px-6 text-center">
+        <div class="flex items-center justify-center space-x-3 mb-2">
+          <img src="images/nemesis-icon.png" alt="Nemesis App Icon" class="h-8 w-8 rounded-lg shadow-md" />
+          <span class="text-2xl font-bold text-white">Nemesis</span>
+        </div>
+        <p class="mb-6">DCA Trade Planner</p>
+        <p>© 2026 Joshua Crellin. All rights reserved.</p>
+        <ul class="flex justify-center space-x-8 mt-4">
+          <li>
+            <a href="nemesis-policy.html" class="hover:text-white transition">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="nemesis-support.html" class="text-purple-400 font-bold">Support</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button
+      id="backToTop"
+      class="fixed bottom-6 right-6 bg-purple-600 text-white p-4 rounded-full shadow-lg hidden hover:bg-purple-700 transition-all duration-300 z-50 focus:outline-none"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+      </svg>
+    </button>
+
+    <script>
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('hidden', window.scrollY <= 400);
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.documentElement.classList.toggle('dark', !isDark);
+        localStorage.theme = isDark ? 'light' : 'dark';
+        updateIcons();
+      }
+
+      function updateIcons() {
+        const isDark = document.documentElement.classList.contains('dark');
+        document.getElementById('sunIcon').classList.toggle('hidden', isDark);
+        document.getElementById('moonIcon').classList.toggle('hidden', !isDark);
+      }
+
+      document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+      updateIcons();
+    </script>
+  </body>
+</html>
